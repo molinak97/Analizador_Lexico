@@ -16,5 +16,18 @@ namespace AnalizadorLexico
         {
             InitializeComponent();
         }
+
+        private void ButtonSeparar_Click(object sender, EventArgs e)
+        {
+            DetalladoGrid.Rows.Clear();
+            TextoCopia.Text = TextoOrigen.Text;
+            string phrase = TextoOrigen.Text;
+            string[] words = phrase.Split(' ');
+
+            foreach (var word in words)
+            {
+                DetalladoGrid.Rows.Add(word);
+            }
+        }
     }
 }
