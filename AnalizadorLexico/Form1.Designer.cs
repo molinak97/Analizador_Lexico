@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.DetalladoGrid = new System.Windows.Forms.DataGridView();
-            this.Detallado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ButtonSeparar = new System.Windows.Forms.Button();
             this.TextoCopia = new System.Windows.Forms.TextBox();
             this.TextoOrigen = new System.Windows.Forms.TextBox();
+            this.Lexema = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Token = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DetalladoGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,16 +42,13 @@
             // 
             this.DetalladoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DetalladoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Detallado});
-            this.DetalladoGrid.Location = new System.Drawing.Point(46, 249);
+            this.Lexema,
+            this.Token,
+            this.ID});
+            this.DetalladoGrid.Location = new System.Drawing.Point(231, 203);
             this.DetalladoGrid.Name = "DetalladoGrid";
-            this.DetalladoGrid.Size = new System.Drawing.Size(708, 167);
+            this.DetalladoGrid.Size = new System.Drawing.Size(343, 167);
             this.DetalladoGrid.TabIndex = 7;
-            // 
-            // Detallado
-            // 
-            this.Detallado.HeaderText = "Detallado";
-            this.Detallado.Name = "Detallado";
             // 
             // ButtonSeparar
             // 
@@ -78,6 +77,21 @@
             this.TextoOrigen.Size = new System.Drawing.Size(258, 141);
             this.TextoOrigen.TabIndex = 4;
             // 
+            // Lexema
+            // 
+            this.Lexema.HeaderText = "Lexema";
+            this.Lexema.Name = "Lexema";
+            // 
+            // Token
+            // 
+            this.Token.HeaderText = "Token";
+            this.Token.Name = "Token";
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,10 +112,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DetalladoGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Detallado;
         private System.Windows.Forms.Button ButtonSeparar;
         private System.Windows.Forms.TextBox TextoCopia;
         private System.Windows.Forms.TextBox TextoOrigen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lexema;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Token;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
     }
 }
 

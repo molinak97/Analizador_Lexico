@@ -19,15 +19,11 @@ namespace AnalizadorLexico
 
         private void ButtonSeparar_Click(object sender, EventArgs e)
         {
-            DetalladoGrid.Rows.Clear();
+            String entrada = TextoOrigen.Text;
+            AnalizadorLexico lex = new AnalizadorLexico();
+            LinkedList<Token> ltokens = lex.escanear(entrada);
+            lex.imprimirListaToken(ltokens);
             TextoCopia.Text = TextoOrigen.Text;
-            string phrase = TextoOrigen.Text;
-            string[] words = phrase.Split(' ');
-
-            foreach (var word in words)
-            {
-                DetalladoGrid.Rows.Add(word);
-            }
         }
     }
 }
