@@ -73,11 +73,11 @@ namespace AnalizadorLexico
                     return "Igual";
                 case Tipo.If:/**/
                     return "If";
-                case Tipo.While:
+                case Tipo.While:/**/
                     return "While";
-                case Tipo.Return:
+                case Tipo.Return:/**/
                     return "Return";
-                case Tipo.Else:
+                case Tipo.Else:/**/
                     return "Else";
                 case Tipo.Constante:/**/
                     return "Constante";

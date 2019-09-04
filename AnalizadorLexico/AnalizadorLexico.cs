@@ -14,11 +14,12 @@ namespace AnalizadorLexico
 
         public LinkedList<Token> escanear(String entrada)
         {
-            entrada = entrada + "$";
-            string[] reservado = { "while", "if", "else", "return" };
+            entrada = entrada + "$";         
             Salida = new LinkedList<Token>();
+            string[] tipo = {"int","char","short","long","float","double","void","bool"};
             estado = 0;
             auxiliarLexico = "";
+
             Char caracter;
             for (int i = 0; i < entrada.Length; i++)
             {
@@ -76,9 +77,10 @@ namespace AnalizadorLexico
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.PuntoComa);
                         }
-                        else if (caracter == ' ')
+                        else if (char.IsWhiteSpace(caracter))
                         {
-
+                            estado = 0;
+                            auxiliarLexico = "";
                         }
                         else if (caracter == ',')
                         {
@@ -129,7 +131,8 @@ namespace AnalizadorLexico
                         {
                             if (caracter == '$' && i == entrada.Length - 1)
                             {
-                                Console.WriteLine("Analisis exitoso!");
+                                auxiliarLexico = "$";
+                                agregarToken(Token.Tipo.Pesos);
                             }
                             else
                             {
@@ -185,10 +188,12 @@ namespace AnalizadorLexico
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.OperadorRel);
+                            i -= 1;
                         }
                         else
                         {
                             agregarToken(Token.Tipo.OperadorRel);
+                            i -= 1;
                         }
                         break;
                     case 5://Operador Igualdad o Igual
@@ -196,6 +201,7 @@ namespace AnalizadorLexico
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.OperadorIgualdad);
+                            i -= 1;
                         }
                         else
                         {
@@ -264,19 +270,24 @@ namespace AnalizadorLexico
                                 agregarToken(Token.Tipo.If);
                                 i -= 1;
                             }
-                            if (auxiliarLexico == "else")
+                            else if (auxiliarLexico == "else")
                             {
                                 agregarToken(Token.Tipo.Else);
                                 i -= 1;
                             }
-                            if (auxiliarLexico == "return")
+                            else if (auxiliarLexico == "return")
                             {
                                 agregarToken(Token.Tipo.Return);
                                 i -= 1;
                             }
-                            if (auxiliarLexico == "while")
+                            else if (auxiliarLexico == "while")
                             {
                                 agregarToken(Token.Tipo.While);
+                                i -= 1;
+                            }
+                            else if (auxiliarLexico == tipo[0]|| auxiliarLexico == tipo[1] || auxiliarLexico == tipo[2] || auxiliarLexico == tipo[3] || auxiliarLexico == tipo[4] || auxiliarLexico == tipo[5] || auxiliarLexico == tipo[6])
+                            {
+                                agregarToken(Token.Tipo.Tipo);
                                 i -= 1;
                             }
                             else

@@ -19,6 +19,7 @@ namespace AnalizadorLexico
 
         private void ButtonSeparar_Click(object sender, EventArgs e)
         {
+            DetalladoData.Rows.Clear();
             String entrada = TextoOrigen.Text;
             AnalizadorLexico lex = new AnalizadorLexico();
             LinkedList<Token> ltokens = lex.escanear(entrada);

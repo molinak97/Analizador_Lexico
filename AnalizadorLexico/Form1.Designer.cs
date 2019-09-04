@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.DetalladoData = new System.Windows.Forms.DataGridView();
-            this.ButtonSeparar = new System.Windows.Forms.Button();
-            this.TextoCopia = new System.Windows.Forms.TextBox();
-            this.TextoOrigen = new System.Windows.Forms.TextBox();
             this.Lexema = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Token = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ButtonSeparar = new System.Windows.Forms.Button();
+            this.TextoCopia = new System.Windows.Forms.TextBox();
+            this.TextoOrigen = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DetalladoData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,10 +45,25 @@
             this.Lexema,
             this.Token,
             this.ID});
-            this.DetalladoData.Location = new System.Drawing.Point(231, 203);
+            this.DetalladoData.Location = new System.Drawing.Point(223, 203);
             this.DetalladoData.Name = "DetalladoData";
-            this.DetalladoData.Size = new System.Drawing.Size(343, 167);
+            this.DetalladoData.Size = new System.Drawing.Size(343, 159);
             this.DetalladoData.TabIndex = 7;
+            // 
+            // Lexema
+            // 
+            this.Lexema.HeaderText = "Lexema";
+            this.Lexema.Name = "Lexema";
+            // 
+            // Token
+            // 
+            this.Token.HeaderText = "Token";
+            this.Token.Name = "Token";
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
             // 
             // ButtonSeparar
             // 
@@ -76,21 +91,6 @@
             this.TextoOrigen.Name = "TextoOrigen";
             this.TextoOrigen.Size = new System.Drawing.Size(258, 141);
             this.TextoOrigen.TabIndex = 4;
-            // 
-            // Lexema
-            // 
-            this.Lexema.HeaderText = "Lexema";
-            this.Lexema.Name = "Lexema";
-            // 
-            // Token
-            // 
-            this.Token.HeaderText = "Token";
-            this.Token.Name = "Token";
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
             // 
             // Form1
             // 
