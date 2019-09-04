@@ -15,6 +15,7 @@ namespace AnalizadorLexico
         public LinkedList<Token> escanear(String entrada)
         {
             entrada = entrada + "$";
+            string[] reservado = { "while", "if", "else", "return" };
             Salida = new LinkedList<Token>();
             estado = 0;
             auxiliarLexico = "";
@@ -30,16 +31,54 @@ namespace AnalizadorLexico
                             estado = 1;
                             auxiliarLexico += caracter;
                         }
+                        else if (caracter == '_')
+                        {
+                            estado = 8;
+                            auxiliarLexico += caracter;
+                        }
                         else if (char.IsLetter(caracter))
                         {
-                            // Este estado queda pendiente definirlo
-                            estado = 2;
+                            estado = 10;
                             auxiliarLexico += caracter;
+                        }
+                        else if (caracter == '<')
+                        {
+                            auxiliarLexico += caracter;
+                            estado = 4;
+                        }
+                        else if (caracter == '>')
+                        {
+                            auxiliarLexico += caracter;
+                            estado = 4;
+                        }
+                        else if (caracter == '=')
+                        {
+                            auxiliarLexico += caracter;
+                            estado = 5;
+                        }
+                        else if (caracter == '&')
+                        {
+                            auxiliarLexico += caracter;
+                            estado = 6;
+                        }
+                        else if (caracter == '|')
+                        {
+                            auxiliarLexico += caracter;
+                            estado = 7;
+                        }
+                        else if (caracter == '!')
+                        {
+                            auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.OperadorNot);
                         }
                         else if (caracter == ';')
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.PuntoComa);
+                        }
+                        else if (caracter == ' ')
+                        {
+
                         }
                         else if (caracter == ',')
                         {
@@ -105,11 +144,34 @@ namespace AnalizadorLexico
                         {
                             estado = 1;
                             auxiliarLexico+= caracter;
-                            //auxiliarLexico += caracter;
                         }
-                        else if (caracter.CompareTo('.') == 0)
+                        else if (caracter == '.')
                         {
                             estado = 2;
+                            auxiliarLexico += caracter;
+                        }
+                        else
+                        {
+                            agregarToken(Token.Tipo.Constante);                       
+                            i -= 1;
+                        }
+                        break;
+                    case 2://Numero Entero o Falla
+                        if (Char.IsDigit(caracter))
+                        {
+                            estado = 3;
+                            auxiliarLexico += caracter;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error lexico");
+                            estado = 0;
+                        }
+                        break;
+                    case 3://Numero Foltante
+                        if (Char.IsDigit(caracter))
+                        {
+                            estado = 3;
                             auxiliarLexico += caracter;
                         }
                         else
@@ -118,27 +180,110 @@ namespace AnalizadorLexico
                             i -= 1;
                         }
                         break;
-                    case 2:
-                        if (Char.IsDigit(caracter))
+                    case 4://Operador Relacional
+                        if (caracter == '=')
                         {
-                            estado = 3;
+                            auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.OperadorRel);
+                        }
+                        else
+                        {
+                            agregarToken(Token.Tipo.OperadorRel);
+                        }
+                        break;
+                    case 5://Operador Igualdad o Igual
+                        if (caracter == '=')
+                        {
+                            auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.OperadorIgualdad);
+                        }
+                        else
+                        {
+                            agregarToken(Token.Tipo.Igual);
+                            i -= 1;
+                        }
+                        break;
+                    case 6://Operador And
+                        if (caracter == '&')
+                        {
+                            auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.OperadorAnd);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error lexico");
+                            estado = 0;
+                        }
+                        break;
+                    case 7://Operador Or
+                        if (caracter == '|')
+                        {
+                            auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.OperadorOr);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error lexico");
+                            estado = 0;
+                        }
+                        break;
+                    case 8://Variables Iniciando con "_"
+                        if (char.IsLetter(caracter))
+                        {
+                            estado = 9;
                             auxiliarLexico += caracter;
                         }
                         else
                         {
-                            Console.WriteLine("Error lexico con:" + caracter + "despues del punto se esperaban mas numeros");
+                            Console.WriteLine("Error lexico");
                             estado = 0;
                         }
                         break;
-                    case 3:
-                        if (Char.IsDigit(caracter))
+                    case 9:
+                        if (char.IsLetter(caracter))
                         {
-                            estado = 3;
+                            estado = 9;
                             auxiliarLexico += caracter;
                         }
                         else
                         {
                             agregarToken(Token.Tipo.Constante);
+                            i -= 1;
+                        }
+                        break;
+                    case 10:
+                        if (char.IsLetter(caracter))
+                        {
+                            estado = 10;
+                            auxiliarLexico += caracter;
+                        }
+                        else
+                        {
+                            if (auxiliarLexico == "if")
+                            {
+                                agregarToken(Token.Tipo.If);
+                                i -= 1;
+                            }
+                            if (auxiliarLexico == "else")
+                            {
+                                agregarToken(Token.Tipo.Else);
+                                i -= 1;
+                            }
+                            if (auxiliarLexico == "return")
+                            {
+                                agregarToken(Token.Tipo.Return);
+                                i -= 1;
+                            }
+                            if (auxiliarLexico == "while")
+                            {
+                                agregarToken(Token.Tipo.While);
+                                i -= 1;
+                            }
+                            else
+                            {
+                                agregarToken(Token.Tipo.Constante);
+                                i -= 1;
+                            }
                         }
                         break;
 
@@ -158,7 +303,7 @@ namespace AnalizadorLexico
         {
             foreach (Token item in lista)
             {
-                Console.WriteLine(item.GetTipo() + " <--> " + item.Getval());
+                Console.WriteLine(item.GetTipo() + " <--> " + item.Getval());              
             }
         }
     }

@@ -22,6 +22,10 @@ namespace AnalizadorLexico
             String entrada = TextoOrigen.Text;
             AnalizadorLexico lex = new AnalizadorLexico();
             LinkedList<Token> ltokens = lex.escanear(entrada);
+            foreach(Token token in ltokens)
+            {
+                DetalladoData.Rows.Add(token.Getval(), token.GetTipo(), token.GetID());
+            }
             lex.imprimirListaToken(ltokens);
             TextoCopia.Text = TextoOrigen.Text;
         }

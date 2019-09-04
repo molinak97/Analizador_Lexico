@@ -45,29 +45,33 @@ namespace AnalizadorLexico
         {
             return valor;
         }
+        public String GetID()
+        {
+            return this.tipoToken.GetHashCode().ToString();
+        }
         public String GetTipo()
         {
             switch (tipoToken)
             {
-                case Tipo.Error:
+                case Tipo.Error:/**/
                     return "Error";
                 case Tipo.Tipo:
                     return "Tipo";
-                case Tipo.PuntoComa:
+                case Tipo.PuntoComa:/**/
                     return "PuntoComa";
-                case Tipo.Coma:
+                case Tipo.Coma:/**/
                     return "Coma";
-                case Tipo.ParentesisIzquierdo:
+                case Tipo.ParentesisIzquierdo:/**/
                     return "ParentesisIzquierdo";
-                case Tipo.ParentesisDerecho:
+                case Tipo.ParentesisDerecho:/**/
                     return "ParentesisDerecho";
-                case Tipo.LlaveIzquierda:
+                case Tipo.LlaveIzquierda:/**/
                     return "LlaveIzquierda";
-                case Tipo.LlaveDerecha:
+                case Tipo.LlaveDerecha:/**/
                     return "LlaveDerecha";
-                case Tipo.Igual:
+                case Tipo.Igual:/**/
                     return "Igual";
-                case Tipo.If:
+                case Tipo.If:/**/
                     return "If";
                 case Tipo.While:
                     return "While";
@@ -75,26 +79,26 @@ namespace AnalizadorLexico
                     return "Return";
                 case Tipo.Else:
                     return "Else";
-                case Tipo.Constante:
+                case Tipo.Constante:/**/
                     return "Constante";
-                case Tipo.OperadorSuma:
+                case Tipo.OperadorSuma:/**/
                     return "OperadorSuma";
-                case Tipo.OperadorNot:
+                case Tipo.OperadorNot:/**/
                     return "OperadorNot";
-                case Tipo.OperadorMultiplicador:
+                case Tipo.OperadorMultiplicador:/**/
                     return "OperadorMultiplicador";
-                case Tipo.OperadorRel:
+                case Tipo.OperadorRel:/**/
                     return "OperadorRel";
-                case Tipo.OperadorIgualdad:
+                case Tipo.OperadorIgualdad:/**/
                     return "OperadorIgualdad";
-                case Tipo.OperadorAnd:
+                case Tipo.OperadorAnd:/**/
                     return "OperadorAnd";
-                case Tipo.OperadorOr:
+                case Tipo.OperadorOr:/**/
                     return "OperadorOr";
-                case Tipo.Pesos:
+                case Tipo.Pesos:/**/
                     return "Pesos";
                 default:
-                    return "Hola";                 
+                    return "";                 
             }
         }
     }

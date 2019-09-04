@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DetalladoGrid = new System.Windows.Forms.DataGridView();
+            this.DetalladoData = new System.Windows.Forms.DataGridView();
             this.ButtonSeparar = new System.Windows.Forms.Button();
             this.TextoCopia = new System.Windows.Forms.TextBox();
             this.TextoOrigen = new System.Windows.Forms.TextBox();
             this.Lexema = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Token = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.DetalladoGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalladoData)).BeginInit();
             this.SuspendLayout();
             // 
-            // DetalladoGrid
+            // DetalladoData
             // 
-            this.DetalladoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DetalladoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DetalladoData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DetalladoData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Lexema,
             this.Token,
             this.ID});
-            this.DetalladoGrid.Location = new System.Drawing.Point(231, 203);
-            this.DetalladoGrid.Name = "DetalladoGrid";
-            this.DetalladoGrid.Size = new System.Drawing.Size(343, 167);
-            this.DetalladoGrid.TabIndex = 7;
+            this.DetalladoData.Location = new System.Drawing.Point(231, 203);
+            this.DetalladoData.Name = "DetalladoData";
+            this.DetalladoData.Size = new System.Drawing.Size(343, 167);
+            this.DetalladoData.TabIndex = 7;
             // 
             // ButtonSeparar
             // 
@@ -97,13 +97,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.DetalladoGrid);
+            this.Controls.Add(this.DetalladoData);
             this.Controls.Add(this.ButtonSeparar);
             this.Controls.Add(this.TextoCopia);
             this.Controls.Add(this.TextoOrigen);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.DetalladoGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalladoData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,7 +111,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView DetalladoGrid;
+        private System.Windows.Forms.DataGridView DetalladoData;
         private System.Windows.Forms.Button ButtonSeparar;
         private System.Windows.Forms.TextBox TextoCopia;
         private System.Windows.Forms.TextBox TextoOrigen;
