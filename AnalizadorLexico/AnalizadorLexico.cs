@@ -16,7 +16,7 @@ namespace AnalizadorLexico
         {
             entrada = entrada + "$";         
             Salida = new LinkedList<Token>();
-            string[] tipo = {"int","char","short","long","float","double","void","bool"};
+            string[] tipo = {"int","char","short","long","float","double","void","bool","main","using","namespace","cout","std","i"};
             estado = 0;
             auxiliarLexico = "";
 
@@ -201,7 +201,6 @@ namespace AnalizadorLexico
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.OperadorIgualdad);
-                            i -= 1;
                         }
                         else
                         {
@@ -217,7 +216,7 @@ namespace AnalizadorLexico
                         }
                         else
                         {
-                            Console.WriteLine("Error lexico");
+                            agregarToken(Token.Tipo.Error);
                             estado = 0;
                         }
                         break;
@@ -229,7 +228,7 @@ namespace AnalizadorLexico
                         }
                         else
                         {
-                            Console.WriteLine("Error lexico");
+                            agregarToken(Token.Tipo.Error);
                             estado = 0;
                         }
                         break;
@@ -241,7 +240,7 @@ namespace AnalizadorLexico
                         }
                         else
                         {
-                            Console.WriteLine("Error lexico");
+                            agregarToken(Token.Tipo.Error);
                             estado = 0;
                         }
                         break;
@@ -253,7 +252,7 @@ namespace AnalizadorLexico
                         }
                         else
                         {
-                            agregarToken(Token.Tipo.Constante);
+                            agregarToken(Token.Tipo.Identificador);
                             i -= 1;
                         }
                         break;
@@ -285,14 +284,14 @@ namespace AnalizadorLexico
                                 agregarToken(Token.Tipo.While);
                                 i -= 1;
                             }
-                            else if (auxiliarLexico == tipo[0]|| auxiliarLexico == tipo[1] || auxiliarLexico == tipo[2] || auxiliarLexico == tipo[3] || auxiliarLexico == tipo[4] || auxiliarLexico == tipo[5] || auxiliarLexico == tipo[6])
+                            else if (auxiliarLexico == tipo[0]|| auxiliarLexico == tipo[1] || auxiliarLexico == tipo[2] || auxiliarLexico == tipo[3] || auxiliarLexico == tipo[4] || auxiliarLexico == tipo[5] || auxiliarLexico == tipo[6] || auxiliarLexico == tipo[7]|| auxiliarLexico == tipo[8] || auxiliarLexico == tipo[9] || auxiliarLexico == tipo[10] || auxiliarLexico == tipo[11] || auxiliarLexico == tipo[12]|| auxiliarLexico == tipo[13])
                             {
-                                agregarToken(Token.Tipo.Tipo);
+                                agregarToken(Token.Tipo.Identificador);
                                 i -= 1;
                             }
                             else
                             {
-                                agregarToken(Token.Tipo.Constante);
+                                agregarToken(Token.Tipo.Identificador);
                                 i -= 1;
                             }
                         }

@@ -11,7 +11,7 @@ namespace AnalizadorLexico
         public enum Tipo
         {
             Error = -1,
-            Tipo,
+            Identificador,
             PuntoComa,
             Coma,
             ParentesisIzquierdo,
@@ -55,8 +55,8 @@ namespace AnalizadorLexico
             {
                 case Tipo.Error:/**/
                     return "Error";
-                case Tipo.Tipo:
-                    return "Tipo";
+                case Tipo.Identificador:
+                    return "Identificador";
                 case Tipo.PuntoComa:/**/
                     return "PuntoComa";
                 case Tipo.Coma:/**/
