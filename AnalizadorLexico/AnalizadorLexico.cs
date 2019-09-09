@@ -16,7 +16,6 @@ namespace AnalizadorLexico
         {
             entrada = entrada + "$";         
             Salida = new LinkedList<Token>();
-            string[] tipo = {"int","char","short","long","float","double","void","bool","main","using","namespace","cout","std","i"};
             estado = 0;
             auxiliarLexico = "";
 
@@ -48,6 +47,11 @@ namespace AnalizadorLexico
                             estado = 4;
                         }
                         else if (caracter == '>')
+                        {
+                            auxiliarLexico += caracter;
+                            estado = 4;
+                        }
+                        else if (caracter == '!')
                         {
                             auxiliarLexico += caracter;
                             estado = 4;
@@ -187,8 +191,7 @@ namespace AnalizadorLexico
                         if (caracter == '=')
                         {
                             auxiliarLexico += caracter;
-                            agregarToken(Token.Tipo.OperadorRel);
-                            i -= 1;
+                            agregarToken(Token.Tipo.OperadorRel);                          
                         }
                         else
                         {
@@ -250,6 +253,11 @@ namespace AnalizadorLexico
                             estado = 9;
                             auxiliarLexico += caracter;
                         }
+                        else if(char.IsDigit(caracter))
+                        {
+                            estado = 9;
+                            auxiliarLexico += caracter;
+                        }
                         else
                         {
                             agregarToken(Token.Tipo.Identificador);
@@ -258,6 +266,11 @@ namespace AnalizadorLexico
                         break;
                     case 10:
                         if (char.IsLetter(caracter))
+                        {
+                            estado = 10;
+                            auxiliarLexico += caracter;
+                        }
+                        else if (char.IsDigit(caracter))
                         {
                             estado = 10;
                             auxiliarLexico += caracter;
@@ -282,11 +295,6 @@ namespace AnalizadorLexico
                             else if (auxiliarLexico == "while")
                             {
                                 agregarToken(Token.Tipo.While);
-                                i -= 1;
-                            }
-                            else if (auxiliarLexico == tipo[0]|| auxiliarLexico == tipo[1] || auxiliarLexico == tipo[2] || auxiliarLexico == tipo[3] || auxiliarLexico == tipo[4] || auxiliarLexico == tipo[5] || auxiliarLexico == tipo[6] || auxiliarLexico == tipo[7]|| auxiliarLexico == tipo[8] || auxiliarLexico == tipo[9] || auxiliarLexico == tipo[10] || auxiliarLexico == tipo[11] || auxiliarLexico == tipo[12]|| auxiliarLexico == tipo[13])
-                            {
-                                agregarToken(Token.Tipo.Identificador);
                                 i -= 1;
                             }
                             else
