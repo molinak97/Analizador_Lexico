@@ -31,6 +31,11 @@ namespace AnalizadorLexico
                             estado = 1;
                             auxiliarLexico += caracter;
                         }
+                        else if(caracter == '"')
+                        {
+                            estado = 11;
+                            auxiliarLexico += caracter;
+                        }
                         else if (caracter == '_')
                         {
                             estado = 8;
@@ -304,7 +309,18 @@ namespace AnalizadorLexico
                             }
                         }
                         break;
-
+                    case 11:
+                        if (caracter != '"')
+                        {
+                            estado = 11;
+                            auxiliarLexico += caracter;
+                        }
+                        else
+                        {
+                            auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.Constante);
+                        }
+                        break;
                 }
             }
             return Salida;
