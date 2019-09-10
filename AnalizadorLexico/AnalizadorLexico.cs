@@ -59,7 +59,7 @@ namespace AnalizadorLexico
                         else if (caracter == '!')
                         {
                             auxiliarLexico += caracter;
-                            estado = 4;
+                            estado = 12;
                         }
                         else if (caracter == '=')
                         {
@@ -75,11 +75,6 @@ namespace AnalizadorLexico
                         {
                             auxiliarLexico += caracter;
                             estado = 7;
-                        }
-                        else if (caracter == '!')
-                        {
-                            auxiliarLexico += caracter;
-                            agregarToken(Token.Tipo.OperadorNot);
                         }
                         else if (caracter == ';')
                         {
@@ -199,7 +194,7 @@ namespace AnalizadorLexico
                             agregarToken(Token.Tipo.OperadorRel);                          
                         }
                         else
-                        {
+                        {                    
                             agregarToken(Token.Tipo.OperadorRel);
                             i -= 1;
                         }
@@ -319,6 +314,19 @@ namespace AnalizadorLexico
                         {
                             auxiliarLexico += caracter;
                             agregarToken(Token.Tipo.Constante);
+                        }
+                        break;
+                    case 12:
+                        if (caracter == '=')
+                        {
+                            auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.OperadorRel);
+                        }
+                        else
+                        {
+                            //auxiliarLexico += caracter;
+                            agregarToken(Token.Tipo.OperadorNot);
+                            i -= 1;
                         }
                         break;
                 }
